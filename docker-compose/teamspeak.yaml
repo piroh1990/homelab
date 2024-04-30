@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   teamspeak:
-    image: teamspeak
+    image: teamspeak:${VERSION}
     restart: always
     ports:
       - ${DEFAULT-PORT}:9987/udp
