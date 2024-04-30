@@ -10,6 +10,6 @@ services:
     volumes:
       - ${CONFIG}:/config
     ports:
-      - ${HTTP-PORT}:80
-      - ${HTTPS-PORT}:443
+      - ${HTTPPORT}:80
+      - ${HTTPSPORT}:443
     restart: unless-stopped
