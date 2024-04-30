@@ -1,0 +1,19 @@
+version: "3.2"
+services:
+  sonarr:
+    container_name: sonarr
+    image: lscr.io/linuxserver/sonarr:${VERSION}
+    restart: unless-stopped
+    logging:
+      driver: json-file
+    ports:
+      - ${PORT}:8989
+    environment:
+      - PUID=3000
+      - PGID=3000
+      - TZ=${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${CONFIG}:/config
+      - ${MEDIA}:${MEDIA}:rw
+      - ${DOWNLOAD}:${DOWNLOAD}:rw
