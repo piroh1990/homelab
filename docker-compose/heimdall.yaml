@@ -1,15 +1,15 @@
 ---
 services:
   heimdall:
-    image: lscr.io/linuxserver/heimdall:latest
+    image: lscr.io/linuxserver/heimdall:${VERSION}
     container_name: heimdall
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Etc/UTC
+      - TZ=${TZ}
     volumes:
-      - /mnt/nas/Daten/docker/heimdall:/config
+      - ${CONFIG}:/config
     ports:
-      - 80:80
-      - 443:443
+      - ${HTTP-PORT}:80
+      - ${HTTPS-PORT}:443
     restart: unless-stopped
