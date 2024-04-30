@@ -1,14 +1,14 @@
 version: "3.2"
 services:
   overseerr:
-    image: sctx/overseerr:latest
+    image: sctx/overseerr:${VERSION}
     container_name: overseerr
     environment:
-      - LOG_LEVEL=info
-      - TZ=Europe/Zurich
-      - PORT=5055 
+      - LOG_LEVEL=${LOGLEVEL}
+      - TZ=${TZ}
+      - PORT=${PORT}
     ports:
-      - 5055:5055
+      - ${PORT}:5055
     volumes:
-      - /mnt/nas/Daten/docker/overseerr:/app/config
+      - ${CONFIG}:/app/config
     restart: unless-stopped
