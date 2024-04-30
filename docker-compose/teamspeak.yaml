@@ -4,7 +4,7 @@ services:
     image: teamspeak:${VERSION}
     restart: always
     ports:
-      - ${DEFAULT-PORT}:9987/udp
+      - ${DEFAULTPORT}:9987/udp
       - ${SERVERQUERRY}:10011
       - ${FILETRANSFERE}:30033
     environment:
