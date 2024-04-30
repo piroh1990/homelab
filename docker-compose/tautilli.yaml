@@ -1,0 +1,16 @@
+---
+version: "3.1"
+services:
+  tautulli:
+    image: ghcr.io/linuxserver/tautulli:${VERSION}
+    container_name: tautulli
+    environment:
+      - PUID=1001
+      - PGID=100
+      - TZ=${TZ}
+    volumes:
+      - ${CONFIG}:/config
+      - ${CONFIG}:/plexlogs
+    ports:
+      - ${PORT}:8181
+    restart: unless-stopped
