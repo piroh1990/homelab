@@ -1,6 +1,10 @@
 services:
   uptime-kuma:
     image: louislam/uptime-kuma:${VERSION}
+    environment:
+      - PUID=3000
+      - PGID=3000
+      - TZ=${TZ}
     volumes:
       - ${CONFIG}:/app/data
     ports:
