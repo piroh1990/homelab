@@ -15,3 +15,10 @@ services:
       - ${CONFIG}:/config
       - ${MEDIA}:${MEDIA}:rw
       - ${DOWNLOAD}:${DOWNLOAD}:rw
+    healthcheck:
+      test: curl --fail http://localhost:${PORT}/ || exit 1
+      interval: 40s
+      timeout: 30s
+      retries: 3
+      start_period: 60s
+    
