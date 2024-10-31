@@ -39,5 +39,5 @@ services:
       - TZ=${TZ}
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ${CONFIG}:/config
+      - ${ANSIBLE_CONFIG}:/config
       - ${ANSIBLE_CONFIG}/playbooks:/playbooks
