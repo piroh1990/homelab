@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PW}
+      - MYSQL_DATABASE=${DATABASE}
+      - PUID=3000
+      - PGID=3000
+      - TZ=${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${MYSQL_CONFIG}:/config
+
+  semaphore:
+    image: semaphoreui/semaphore
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    environment:
+      - SEMAPHORE_DB=${DATABASE}
+      - SEMAPHORE_DB_USER=root
+      - SEMAPHORE_DB_PASS=${MYSQL_ROOT_PW}
+      - SEMAPHORE_DB_HOST=db
+      - PUID=3000
+      - PGID=3000
+      - TZ=${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${SEMAPHORE_CONFIG}:/config
+
+  ansible:
+    image: willhallonline/ansible
+    environment:
+      - PUID=3000
+      - PGID=3000
+      - TZ=${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${CONFIG}:/config
+      - ${ANSIBLE_CONFIG}/playbooks:/playbooks
