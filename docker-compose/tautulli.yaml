@@ -11,6 +11,7 @@ services:
     volumes:
       - ${CONFIG}:/config
       - ${CONFIG}:/plexlogs
+      - ${NEWSLETTER}:/newsletter
     ports:
       - ${PORT}:8181
     restart: unless-stopped
