@@ -1,10 +1,4 @@
 version: "3.1"
-
-networks:
-  gitea:
-    external: false
-
-
 services:
   server:
     image: gitea/gitea:{$VERSION}
@@ -13,8 +7,6 @@ services:
       - USER_UID=${PUID}
       - USER_GID=${GUID}
     restart: always
-    networks:
-      - gitea
     volumes:
       - ${CONFIG}:/data
       - /etc/timezone:/etc/timezone:ro
