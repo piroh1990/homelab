@@ -13,4 +13,4 @@ services:
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "{$PORT}:3000"
-      - "{$SSH-PORT}:22"
+      - "{$SSH}:22"
