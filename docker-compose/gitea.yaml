@@ -1,7 +1,7 @@
 version: "3.1"
 services:
   server:
-    image: gitea/gitea:{$VERSION}
+    image: gitea/gitea:${VERSION}
     container_name: gitea
     environment:
       - USER_UID=${PUID}
@@ -12,5 +12,5 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     ports:
-      - ${PORT}:3000
-      - ${SSH}:22
+      - "${PORT}:3000"
+      - "${SSH}:22"
