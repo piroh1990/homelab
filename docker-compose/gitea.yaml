@@ -12,5 +12,5 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     ports:
-      - "${PORT}:3000"
-      - "${SSH}:22"
+      - ${PORT}:3000
+      - ${SSH}:22
