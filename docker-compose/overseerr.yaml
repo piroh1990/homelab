@@ -11,4 +11,5 @@ services:
       - ${PORT}:5055
     volumes:
       - ${CONFIG}:/app/config
+      - ${LOGO}:/app/public/logo_full.svg
     restart: unless-stopped
